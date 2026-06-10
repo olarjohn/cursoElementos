@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inducción Matemática y Estructuras Inductivas</title>
+  <!-- MathJax para renderizar fórmulas -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; display: flex; background: #f5f5f5; }
+    .panel { flex: 1; padding: 20px; overflow-y: auto; }
+    .teoria { background: #e3f2fd; }
+    .visual { background: #fff3e0; }
+    .practico { background: #e8f5e9; }
+    h1, h2, h3 { color: #0d47a1; }
+    .ejercicio { background: #ffffff; border: 1px solid #ccc; padding: 10px; margin: 10px 0; border-radius: 5px; }
+    .bloque { display: inline-block; background: #bbdefb; padding: 10px; margin: 5px; border-radius: 5px; cursor: pointer; }
+    .flecha { margin: 0 10px; font-weight: bold; color: #0d47a1; }
+    .explicacion { display: none; margin-top: 10px; padding: 10px; background: #fafafa; border-left: 4px solid #0d47a1; }
+    .editor { margin-top: 20px; background: #fff; border: 1px solid #ccc; padding: 10px; }
+    textarea { width: 100%; height: 150px; font-family: "Courier New", monospace; }
+    .resultado { margin-top: 10px; padding: 10px; background: #e0f7fa; border: 1px solid #00796b; }
+    .paso { margin-top: 10px; padding: 10px; background: #fffde7; border-left: 4px solid #fbc02d; display: none; }
+    .arbol { text-align: center; margin-top: 20px; }
+    .nodo { display: inline-block; background: #ffe082; padding: 10px; margin: 5px; border-radius: 50%; }
+    .linea { height: 20px; border-left: 2px solid #000; margin: 0 auto; }
+  </style>
+</head>
+<body>
+  <!-- Panel Teórico -->
+  <div class="panel teoria">
+    <h1>Inducción Matemática y Estructuras Inductivas</h1>
+    <h2>Principio de Inducción</h2>
+    <p>La inducción matemática es como una receta: primero verificamos el inicio (caso base) y luego comprobamos que el paso siguiente siempre funciona (paso inductivo).</p>
+  </div>
+
+  <!-- Panel Visual -->
+  <div class="panel visual">
+    <h2>Visualización del Paso Inductivo</h2>
+    <div>
+      <span class="bloque" onclick="mostrar('base')">Caso Base</span>
+      <span class="flecha">→</span>
+      <span class="bloque" onclick="mostrar('sup')">Suposición</span>
+      <span class="flecha">→</span>
+      <span class="bloque" onclick="mostrar('ind')">Paso Inductivo</span>
+    </div>
+    <div id="base" class="explicacion">Ejemplo: \(0 = \frac{0(0+1)}{2}\).</div>
+    <div id="sup" class="explicacion">Ejemplo: \(1+2+...+n = \frac{n(n+1)}{2}\).</div>
+    <div id="ind" class="explicacion">Ejemplo: \(1+2+...+n+(n+1) = \frac{(n+1)(n+2)}{2}\).</div>
+
+    <h2>Árbol Binario (Inducción Generalizada)</h2>
+    <div class="arbol">
+      <div class="nodo">Raíz</div>
+      <div class="linea"></div>
+      <div>
+        <span class="nodo">Izq</span>
+        <span class="nodo">Der</span>
+      </div>
+    </div>
+    <p>Un árbol binario se construye inductivamente: cada nodo tiene un valor y dos subárboles.</p>
+  </div>
+
+  <!-- Panel Práctico -->
+  <div class="panel practico">
+    <h2>Ejercicios con Diagramas</h2>
+
+    <div class="ejercicio">
+      <p>1. \(1 + 2 + 3 + \dots + n = \frac{n(n+1)}{2}\)</p>
+      <div><span class="bloque">Caso Base</span> → <span class="bloque">Suposición</span> → <span class="bloque">Paso Inductivo</span></div>
+    </div>
+
+    <div class="ejercicio">
+      <p>2. \(2 + 4 + 6 + \dots + 2n = n(n+1)\)</p>
+      <div><span class="bloque">Caso Base</span> → <span class="bloque">Suposición</span> → <span class="bloque">Paso Inductivo</span></div>
+    </div>
+
+    <div class="ejercicio">
+      <p>3. \(1 + 2 + 4 + \dots + 2^n = 2^{n+1} - 1\)</p>
+      <div><span class="bloque">Caso Base</span> → <span class="bloque">Suposición</span> → <span class="bloque">Paso Inductivo</span></div>
+    </div>
+
+    <div class="ejercicio">
+      <p>4. \(1^2 + 2^2 + \dots + n^2 = \frac{n(n+1)(2n+1)}{6}\)</p>
+      <div><span class="bloque">Caso Base</span> → <span class="bloque">Suposición</span> → <span class="bloque">Paso Inductivo</span></div>
+    </div>
+
+    <div class="ejercicio">
+      <p>5. \(1^3 + 2^3 + \dots + n^3 = \left(\frac{n(n+1)}{2}\right)^2\)</p>
+      <div><span class="bloque">Caso Base</span> → <span class="bloque">Suposición</span> → <span class="bloque">Paso Inductivo</span></div>
+    </div>
+
+    <div class="ejercicio">
+      <p>6. \((1+x)^n \geq 1 + nx\) para \(n \geq 1, x \geq -1\)</p>
+      <div><span class="bloque">Caso Base</span> → <span class="bloque">Suposición</span> → <span class="bloque">Paso Inductivo</span></div>
+    </div>
+
+    <div class="ejercicio">
+      <p>7. \(n! \geq 2^{n-1}\) para \(n \geq 1\)</p>
+      <div><span class="bloque">Caso Base</span> → <span class="bloque">Suposición</span> → <span class="bloque">Paso Inductivo</span></div>
+    </div>
+
+    <h2>Editor en Vivo con LaTeX</h2>
+    <div class="editor">
+      <p>Escribe tu demostración aquí (usa LaTeX, por ejemplo: <code>\(a^2+b^2=c^2\)</code>):</p>
+      <label for="entrada">Demostración (LaTeX)</label>
+      <textarea id="entrada" placeholder="Escribe aquí tu demostración en LaTeX"></textarea>
+      <button onclick="ejecutar()">Mostrar Resultado</button>
+      <div id="salida" class="resultado"></div>
+    </div>
+
+    <h2>Modo Paso a Paso Automático</h2>
+    <button onclick="mostrarPaso(1)">Caso Base</button>
+    <button onclick="mostrarPaso(2)">Suposición</button>
+    <button onclick="mostrarPaso(3)">Paso Inductivo</button>
+
+    <div id="paso1" class="paso">Caso Base: comprobamos que la fórmula funciona en el inicio.</div>
+    <div id="paso2" class="paso">Suposición: asumimos que la fórmula es cierta para \(n

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Congruencias - Página Interactiva</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+    h1, h2 { color: #2c3e50; }
+    .teoria, .ejemplo, .ejercicio { border: 1px solid #ccc; padding: 15px; margin: 15px 0; border-radius: 8px; }
+    .ejemplo { background: #f9f9f9; }
+    .ejercicio { background: #eef; }
+    button { margin-top: 10px; padding: 5px 10px; cursor: pointer; }
+    .solucion { display: none; margin-top: 10px; background: #fff; border-left: 3px solid #2c3e50; padding: 10px; }
+  </style>
+  <script>
+    function mostrarSolucion(id) {
+      const sol = document.getElementById(id);
+      sol.style.display = sol.style.display === "none" ? "block" : "none";
+    }
+  </script>
+</head>
+<body>
+
+<h1>Congruencias - Explicación Paso a Paso</h1>
+
+<!-- Sección 1: Congruencia -->
+<h2>1. Congruencia</h2>
+<div class="teoria">
+  <strong>Definición:</strong> Dos enteros <code>a</code> y <code>b</code> son congruentes módulo <code>n</code> si <code>n</code> divide a <code>(a - b)</code>.  
+  Se escribe: <code>a ≡ b (mod n)</code>.
+  <br><br>
+  <strong>Interpretación:</strong> Esto significa que al dividir <code>a</code> y <code>b</code> entre <code>n</code>, ambos dejan el mismo residuo.  
+  Ejemplo: 23 ≡ 5 (mod 9) porque tanto 23 como 5 dejan residuo 5 al dividirse por 9.
+  <br><br>
+  <strong>Clases de equivalencia:</strong> Cada número pertenece a un grupo infinito de números que comparten el mismo residuo.  
+  Ejemplo: módulo 3, la clase de 2 es {..., -4, -1, 2, 5, 8, 11, ...}.
+</div>
+
+<div class="ejemplo">
+  <strong>Ejemplo:</strong> Verificar si 34 ≡ 84 (mod 5).  
+  <button onclick="mostrarSolucion('sol1')">Mostrar solución</button>
+  <div id="sol1" class="solucion">
+    Paso 1: 34 ÷ 5 → residuo 4.<br>
+    Paso 2: 84 ÷ 5 → residuo 4.<br>
+    <strong>Resultado:</strong> Sí, son congruentes porque tienen el mismo residuo.
+  </div>
+</div>
+
+<div class="ejercicio">
+  <strong>Ejercicio:</strong> Comprueba si 37 ≡ 9 (mod 7).  
+  <button onclick="mostrarSolucion('solEj1')">Mostrar solución</button>
+  <div id="solEj1" class="solucion">
+    Paso 1: 37 ÷ 7 → residuo 2.<br>
+    Paso 2: 9 ÷ 7 → residuo 2.<br>
+    <strong>Resultado:</strong> Sí, son congruentes.
+  </div>
+</div>
+
+<!-- Sección 2: Congruencias lineales -->
+<h2>2. Congruencias lineales</h2>
+<div class="teoria">
+  <strong>Definición:</strong> Una congruencia lineal es de la forma <code>ax ≡ b (mod n)</code>.  
+  Se resuelve usando el inverso de <code>a</code> módulo <code>n</code>, si existe.  
+  Si <code>gcd(a,n)=1</code>, el inverso existe y la solución es única.  
+  Si <code>gcd(a,n)=d>1</code>, la congruencia tiene solución solo si <code>d</code> divide a <code>b</code>.
+</div>
+
+<div class="ejemplo">
+  <strong>Ejemplo:</strong> Resolver 3x ≡ 4 (mod 7).  
+  <button onclick="mostrarSolucion('sol2')">Mostrar solución</button>
+  <div id="sol2" class="solucion">
+    Paso 1: Inverso de 3 módulo 7 → es 5, porque 3·5 = 15 ≡ 1 (mod 7).<br>
+    Paso 2: Multiplicar ambos lados por 5 → x ≡ 5·4 = 20 ≡ 6 (mod 7).<br>
+    <strong>Resultado:</strong> x ≡ 6 (mod 7).
+  </div>
+</div>
+
+<div class="ejercicio">
+  <strong>Ejercicio:</strong> Resuelve 5x ≡ 2 (mod 11).  
+  <button onclick="mostrarSolucion('solEj2')">Mostrar solución</button>
+  <div id="solEj2" class="solucion">
+    Paso 1: Inverso de 5 módulo 11 es 9 (porque 5·9 = 45 ≡ 1 mod 11).<br>
+    Paso 2: Multiplicar ambos lados → x ≡ 9·2 = 18 ≡ 7 (mod 11).<br>
+    <strong>Resultado:</strong> x ≡ 7 (mod 11).
+  </div>
+</div>
+
+<!-- Sección 3: Conjunto Z/nZ -->
+<h2>3. Conjunto Z/nZ</h2>
+<div class="teoria">
+  <strong>Definición:</strong> Z/nZ es el conjunto de clases de equivalencia módulo n:  
+  <code>{[0], [1], ..., [n-1]}</code>.  
+  Se pueden sumar y multiplicar clases como si fueran enteros, pero reduciendo módulo n.  
+  Si n es primo, cada elemento distinto de cero tiene inverso y se comporta como los números reales.
+</div>
+
+<div class="ejemplo">
+  <strong>Ejemplo:</strong> En Z/5Z, calcular [3] + [4].  
+  <button onclick="mostrarSolucion('sol3')">Mostrar solución</button>
+  <div id="sol3" class="solucion">
+    Paso 1: [3] + [4] = [7].<br>
+    Paso 2: Reducir módulo 5 → 7 ≡ 2 (mod 5).<br>
+    <strong>Resultado:</strong> [2].
+  </div>
+</div>
+
+<div class="ejercicio">
+  <strong>Ejercicio:</strong> En Z/6Z, calcula [2] · [5].  
+  <button onclick="mostrarSolucion('solEj3')">Mostrar solución</button>
+  <div id="solEj3" class="solucion">
+    Paso 1: [2] · [5] = [10].<br>
+    Paso 2: Reducir módulo 6 → 10 ≡ 4 (mod 6).<br>
+    <strong>Resultado:</strong> [4].
+  </div>
+</div>
+
+</body>
+</html>
